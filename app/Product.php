@@ -9,7 +9,7 @@ namespace App;
 
 class Product extends Model
 {
-    //use HasFactory;
+    use HasFactory;
     protected $fillable = [
         'name',
         'brand',
