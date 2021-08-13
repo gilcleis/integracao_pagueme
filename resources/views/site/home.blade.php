@@ -13,7 +13,7 @@
     @foreach ($products as $product)
     <div class="col-md-3">
         <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" src="https://via.placeholder.com/300X300?text=PRODUCT">
+            <img class="card-img-top" src="{{$product->image}}">
             <div class="card-body">
                 <p style="min-height: 50px;">{{ $product->name }}</p>
                 <h2 class="card-title pricing-card-title">R$ {{ explode(',', $product->price_formated)[0] }}<small class="text-muted">,{{ explode(',', $product->price_formated)[1] }}</small></h2>

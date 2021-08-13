@@ -13,7 +13,8 @@ class Product extends Model
     protected $fillable = [
         'name',
         'brand',
-        'price'
+        'price',
+        'image'
     ];
 
     public function setPriceAttribute($value)

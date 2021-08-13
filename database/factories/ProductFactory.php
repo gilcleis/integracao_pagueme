@@ -4,9 +4,9 @@ namespace Database\Factories;
 
 use App\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 
-class ProductFactory extends EloquentFactory
+
+class ProductFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
@@ -23,10 +23,11 @@ class ProductFactory extends EloquentFactory
     public function definition()
     {
         $dados = [
-            'nome' => $this->faker->name(),
-            'brand' => $this->faker->firstNameFemale(),
-        
-            'price' => rand(1926,2342),
+            'name' => $this->faker->name(),
+            'brand' => $this->faker->firstNameFemale(),        
+            'price' => rand(1026,3242),
+            'image' => $this->faker->imageUrl($width = 640, $height = 480, 'sports'),
+            //'image' => 'http://lorempixel.com/400/200',
            
         ];
         
