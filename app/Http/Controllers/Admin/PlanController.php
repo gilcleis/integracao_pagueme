@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Plan;
+use App\Models\Plan;
 use App\Services\PagarmeRequestService;
 use Exception;
 use Illuminate\Http\Request;

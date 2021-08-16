@@ -2,7 +2,7 @@
 
 namespace App\Console;
 
-use App\Transaction;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\DB;
 use App\Services\PagarmeRequestService;
 use Illuminate\Console\Scheduling\Schedule;
