@@ -3,8 +3,7 @@
 @section('content')
 <div class="px-md-5 py-5 mx-md-5 text-center">
     <h1 class="display-4">Nossos Produtos</h1>
-    <p class="lead">
-        Preços e condições especiais nos melhores produtos você só encontra aqui. 
+    <p class="lead">        
         Aproveite as nossas promoções e faça suas compras!
     </p>
 </div>

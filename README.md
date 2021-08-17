@@ -26,8 +26,6 @@ git clone https://github.com/gilcleis/integracao_pagueme.git
 - Crie uma copia do arqruivo __.env.example__ nomeando para __.env__ 
 
 - configure as credencias de banco de dados no arquivo __.env__
-- adicionar a chave __URI_BASE_PAGARME="https://api.pagar.me/1/"__ no __.env__ 
-- adicionar a chave __API_KEY_PAGARME= "coloque_aqui_a_chave_da_api"__ no __.env__ 
 
 ```
 DB_CONNECTION=mysql
@@ -37,6 +35,8 @@ DB_DATABASE=pagarme
 DB_USERNAME=root
 DB_PASSWORD=
 ```
+- adicionar a chave __URI_BASE_PAGARME="https://api.pagar.me/1/"__ no __.env__ 
+- adicionar a chave __API_KEY_PAGARME= "coloque_aqui_a_chave_da_api"__ no __.env__ 
 
 - Execute o comando:
 
