@@ -38,9 +38,32 @@ class UserSeeder extends Seeder
             "city" => "Salvador",
             "state" => "BA",
             "country" => "Laborum Cum magni q",
-            "password" => ('123456'),
-            //"password" => '$2y$10$wAmA/JSgYUJjufYsYF3Z3eIN7dTBXOpeYOMurfEABBiE/0XyvX.Fi', // password
+            "password" => ('123456'),            
             "is_admin" => true,
+            "remember_token" => null,
+            "pagarme_id" => null
+
+        ],[
+            "id" => 2,
+            "name" => "Cliente",
+            "email" => "cliente@cliente.com",
+            "cpf" => "41072995549",
+            "rg" => "",
+            "birth_date" => null,
+            "genre" => "male",
+            "phone" => "1687296246",
+            "cell" => "71777777777",
+            "cover" => null,
+            "street" => "rua nova",
+            "number" => "155",
+            "complement" => "Quia harum officia p",
+            "zip_code" => "428000000",
+            "district" => "Teste",
+            "city" => "Salvador",
+            "state" => "BA",
+            "country" => "Laborum Cum magni q",
+            "password" => ('123456'),            
+            "is_admin" => false,
             "remember_token" => null,
             "pagarme_id" => null
 

@@ -132,8 +132,7 @@ class PagarmeRequestService extends BaseRequestService
         $data = [
             'customer_id' => $customer_id,
             'card_number' => $card_number,
-            'card_expiration_date' => $card_expiration_date,
-            'card_expiration_date' => $card_expiration_date,
+            'card_expiration_date' => $card_expiration_date,            
             'card_holder_name' => $card_holder_name,
             'card_cvv' => $card_cvv
         ];
@@ -191,5 +190,15 @@ class PagarmeRequestService extends BaseRequestService
     public function getBalance()
     {
         return $this->get('balance');
+    }
+
+    public function getPlans()
+    {
+        return $this->get('plans');
+    }
+
+    public function getSubscriptions()
+    {
+        return $this->get('subscriptions');
     }
 }

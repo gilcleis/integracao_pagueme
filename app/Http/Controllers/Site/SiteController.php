@@ -187,7 +187,7 @@ class SiteController extends Controller
 
     public function planSubscriptionStore(Request $request, $id)
     {
-        $plan = Plan::find($id);
+        $plan = Plan::find($id);       
 
         if (is_null($plan)) {
             abort(404, 'Plano não encontrado.');
@@ -210,9 +210,8 @@ class SiteController extends Controller
         }
 
         $user = Auth::user();
-
-        $pagarme = new PagarmeRequestService();
-
+        
+        $pagarme = new PagarmeRequestService();        
         
 
         try {
@@ -220,6 +219,27 @@ class SiteController extends Controller
 
             if (!is_null($user->pagarme_id)) {
                 $customer = $pagarme->getCustomer($user->pagarme_id);
+                //$phone_numbers = [sprintf('%s%s', '+55', $user->cell)];
+                $phone_numbers = ['ddd'=>substr($user->cell,0, 2),'number'=>substr($user->cell, 2)];
+                $documents = [
+                    [
+                        'type' => 'cpf',
+                        'number' => $user->cpf
+                    ]
+                ];
+
+                $address = [
+                    
+                        'street' => $user->street,
+                        'street_number' => $user->number,
+                        'neighborhood' => $user->district,
+                        'zipcode' => $user->zip_code,                
+                    
+                ];
+                
+                $customer['address'] = $address ;
+                $customer['phone'] = $phone_numbers;
+                
             }else{
                 $phone_numbers = [sprintf('%s%s', '+55', $user->cell)];
                 $documents = [
@@ -228,15 +248,16 @@ class SiteController extends Controller
                         'number' => $user->cpf
                     ]
                 ];
-    
+                
                 $customer = $pagarme->createCustomer($user->name, $user->email, $user->id, $phone_numbers, $documents);
+                
             }
-    
+            
             if (isset($customer['errors'])) {
                 $errors = collect($customer['errors'])->pluck('message');
                 return redirect()->back()->withInput()->withErrors($errors);
             }
-    
+            
             if (!empty($data['card_id'])) {
                 $card_id = $data['card_id'];
             }else{
@@ -257,9 +278,9 @@ class SiteController extends Controller
     
                 $card_id = $card['id'];
             }
-    
+
             $subscription = $pagarme->createSubscription($customer, $plan->code, 'credit_card', $card_id);
-    
+          
             if (isset($subscription['errors'])) {
                 $errors = collect($subscription['errors'])->pluck('message');
                 return redirect()->back()->withInput()->withErrors($errors);
@@ -275,6 +296,7 @@ class SiteController extends Controller
                 $transaction = $this->managerTransactionData($subscription['current_transaction']);
                 $user->transactions()->create($transaction);
             }
+            
 
             DB::commit();
             return redirect()->route('site.account.home')->with([
@@ -282,6 +304,7 @@ class SiteController extends Controller
                 'message' => 'Plano contratado com sucesso'
             ]);
         } catch (Exception $e) {
+            
             DB::rollback();
             return redirect()->back()->withInput()->withErrors([
                 'message' => $e->getMessage()
