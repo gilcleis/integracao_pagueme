@@ -7,6 +7,12 @@
         "laravel",
         "pagarme"
     ],
+    "authors": [
+    {
+      "name": "Gilclei Araujo",
+      "email": "gilclei@gmail.com"
+    }
+    ],
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
